@@ -6,36 +6,44 @@ namespace ConsoleApp1_ProjectVisualSudio.ArrayCreation
 {
     class PrimeNumberfromArray
     {
-        static void Main(String[] args)
+
+        public void FindPrime(int[] a)
         {
-            int count = 0;
-           
-            Console.WriteLine("All number list");
-            int[] num = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 18 };
-            
-            for (int i = 0; i < num.Length; i++)
+            Console.WriteLine("Prime Number from array");
+            for (int i = 0; i < a.Length; i++)
             {
-                for (int j = 0; j < num[i]; j++)
-                    if (j == num[i])
-                    {
-
-                        count++;
-                        break;
-
-                    }
-
-                if (count == 2)
+                bool flag = true;
+                for (int j = 2; j < a[i]; j++)
                 {
-                    Console.Write("Is Prime");
+                    if (a[i] % j == 0)
+                    {
+                        flag = false;
+                    }
+                }
+                if (flag == true)
+                {
+                    Console.WriteLine(a[i] + " Is Prime");
                 }
                 else
                 {
-                    Console.WriteLine("Not Prime");
+                    Console.WriteLine(a[i] + " Not Prime");
                 }
             }
-            
+            static void Main(String[] args)
+            {
+                int[] a = new int[10];
+                Console.WriteLine("Enter Array Element");
+                for (int i = 0; i < a.Length; i++)
+                {
+                    a[i] = int.Parse(Console.ReadLine());
+                }
 
+                PrimeNumberfromArray pn = new PrimeNumberfromArray();
+                pn.FindPrime(a);
+
+
+            }
         }
     }
-}
 
+}
